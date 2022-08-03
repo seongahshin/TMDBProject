@@ -71,7 +71,7 @@ class MediaCollectionViewController: UICollectionViewController {
                         print("JSON: \(json)")
 
                        
-                        for num in 0...5 {
+                for num in 0...json["results"].count {
                             let MI = json["results"][num]["poster_path"].stringValue
                             print(MI)
                             let MT = json["results"][num]["title"].stringValue
