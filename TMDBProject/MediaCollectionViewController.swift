@@ -13,16 +13,16 @@ import Kingfisher
 
 class MediaCollectionViewController: UICollectionViewController {
     
-    @IBOutlet weak var MediaCollectionView: MediaCollectionViewCell!
+   
     var list: [MediaModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 8
+        let spacing: CGFloat = 20
         let width = UIScreen.main.bounds.width - (spacing * 2)
-        layout.itemSize = CGSize(width: width, height: width)
+        layout.itemSize = CGSize(width: width, height: width * 1.2)
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
@@ -33,7 +33,7 @@ class MediaCollectionViewController: UICollectionViewController {
 
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        requestData()
+
         print(list.count)
         return list.count
         
@@ -42,17 +42,64 @@ class MediaCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MediaCollectionViewCell", for: indexPath) as! MediaCollectionViewCell
         let url = URL(string: "https://image.tmdb.org/t/p/original/\(list[indexPath.row].movieImage)")
+        
+        // 개봉일 디자인
+        cell.mediaReleaseDate.font = .systemFont(ofSize: 10)
+        cell.mediaReleaseDate.textAlignment = .center
+        
+        // 이미지 디자인
         cell.mediaImage.kf.setImage(with: url)
-        cell.mediaTitle.text = list[indexPath.row].movieTitle
-        cell.mediaActor.text = list[indexPath.row].movieActor
         cell.mediaImage.contentMode = .scaleAspectFill
+        cell.mediaImage.layer.cornerRadius = 10
+        cell.mediaImage.layer.borderWidth = 0.05
+        cell.mediaImage.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
+        
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.shadowOffset = CGSize(width: -2, height: 2)
+        cell.layer.shadowRadius = 3
+
+        
+        // 타이틀 디자인
+        cell.mediaTitle.text = list[indexPath.row].movieTitle
+        cell.mediaTitle.font = .boldSystemFont(ofSize: 16)
+        
+        // 배우 디자인
+        cell.mediaActor.textAlignment = .center
+        
+        // 버튼 디자인
+        cell.detailButton.setTitle("자세히 보기", for: .normal)
+        cell.detailButton.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        cell.detailButton.setTitleColor(.black, for: .normal)
+        
+        
+        // 화살표 버튼 디자인
+        cell.arrowButton.tintColor = .darkGray
+        
+        // 셀 테두리 디자인
+        cell.backView.layer.masksToBounds = true
+        cell.backView.layer.cornerRadius = 10
+        cell.backView.layer.borderWidth = 0.05
+        
+        
+        
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.shadowOffset = CGSize(width: -2, height: 2)
+        cell.layer.shadowRadius = 3
+    
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from: list[indexPath.row].movieDate)
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        let resultString = dateFormatter.string(from: date!)
-        cell.mediaReleaseDate.text = resultString
+        
+        if let date1 = date {
+            let resultString = dateFormatter.string(from: date1)
+            cell.mediaReleaseDate.text = resultString
+        }
         
         return cell
 
@@ -71,19 +118,29 @@ class MediaCollectionViewController: UICollectionViewController {
                         print("JSON: \(json)")
 
                        
-                for num in 0...json["results"].count {
-                            let MI = json["results"][num]["poster_path"].stringValue
-                            print(MI)
-                            let MT = json["results"][num]["title"].stringValue
-                            let MD = json["results"][num]["overview"].stringValue
-                            let MR = json["results"][num]["release_date"].stringValue
+                for num in 0...json["results"].count - 1 {
+                    // 이미지
+                    let MI = json["results"][num]["poster_path"].stringValue
+                    
+                    // 제목
+                    let MT = json["results"][num]["title"].stringValue
+                    
+                    // 배우 (미완)
+                    let MD = json["results"][num]["genres"]["name"].stringValue
+                    
+                    // 개봉일
+                    let MR = json["results"][num]["release_date"].stringValue
+                    
+                    // 장르
+                    let MG = json["results"][num]["genre_ids"][0].intValue
+                    
 
-                            let data = MediaModel(movieImage: MI, movieTitle: MT, movieActor: MD, movieDate: MR)
-                            self.list.append(data)
-                        }
+                    let data = MediaModel(movieImage: MI, movieTitle: MT, movieActor: MD, movieDate: MR)
+                    self.list.append(data)
+                }
                         
-                        self.collectionView.reloadData()
-                        print(list)
+                    self.collectionView.reloadData()
+                    print(list)
                     
 
 
@@ -94,4 +151,5 @@ class MediaCollectionViewController: UICollectionViewController {
                 }
             }
     }
+
 

@@ -20,4 +20,7 @@ class MediaCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mediaReleaseDate: UILabel!
     
     @IBOutlet weak var mediaGenre: UILabel!
+    
+    @IBOutlet weak var backView: UIView!
+    
 }
