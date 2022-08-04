@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C9F5A8E289B9043005C174F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F5A8D289B9042005C174F /* DetailViewController.swift */; };
+		8C9F5A91289B90A3005C174F /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F5A90289B90A3005C174F /* OverviewTableViewCell.swift */; };
+		8C9F5A93289B90AE005C174F /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F5A92289B90AE005C174F /* CastTableViewCell.swift */; };
 		8CA1EF962899F6B40015EB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA1EF952899F6B40015EB7E /* AppDelegate.swift */; };
 		8CA1EF982899F6B40015EB7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA1EF972899F6B40015EB7E /* SceneDelegate.swift */; };
 		8CA1EF9A2899F6B40015EB7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA1EF992899F6B40015EB7E /* ViewController.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C9F5A8D289B9042005C174F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8C9F5A90289B90A3005C174F /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
+		8C9F5A92289B90AE005C174F /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 		8CA1EF922899F6B40015EB7E /* TMDBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA1EF952899F6B40015EB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CA1EF972899F6B40015EB7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C9F5A8F289B9049005C174F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8C9F5A8D289B9042005C174F /* DetailViewController.swift */,
+				8C9F5A90289B90A3005C174F /* OverviewTableViewCell.swift */,
+				8C9F5A92289B90AE005C174F /* CastTableViewCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8C9F5A94289B9726005C174F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8CA1EF9B2899F6B40015EB7E /* Main.storyboard */,
+				8CA1EFBD289A43270015EB7E /* MediaCollectionViewCell.swift */,
+				8CA1EFBB289A42E30015EB7E /* MediaCollectionViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		8CA1EF892899F6B40015EB7E = {
 			isa = PBXGroup;
 			children = (
@@ -81,14 +107,13 @@
 		8CA1EF942899F6B40015EB7E /* TMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				8C9F5A94289B9726005C174F /* Main */,
+				8C9F5A8F289B9049005C174F /* Detail */,
 				8CA1EFB22899FA9A0015EB7E /* Key */,
 				8CA1EFB12899FA1A0015EB7E /* Resource */,
 				8CA1EF952899F6B40015EB7E /* AppDelegate.swift */,
 				8CA1EF972899F6B40015EB7E /* SceneDelegate.swift */,
 				8CA1EF992899F6B40015EB7E /* ViewController.swift */,
-				8CA1EF9B2899F6B40015EB7E /* Main.storyboard */,
-				8CA1EFBD289A43270015EB7E /* MediaCollectionViewCell.swift */,
-				8CA1EFBB289A42E30015EB7E /* MediaCollectionViewController.swift */,
 				8CA1EFC5289A4DFB0015EB7E /* MediaModel.swift */,
 				8CA1EF9E2899F6B60015EB7E /* Assets.xcassets */,
 				8CA1EFA02899F6B60015EB7E /* LaunchScreen.storyboard */,
@@ -198,9 +223,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C9F5A91289B90A3005C174F /* OverviewTableViewCell.swift in Sources */,
 				8CA1EFC6289A4DFB0015EB7E /* MediaModel.swift in Sources */,
+				8C9F5A93289B90AE005C174F /* CastTableViewCell.swift in Sources */,
 				8CA1EF9A2899F6B40015EB7E /* ViewController.swift in Sources */,
 				8CA1EFB42899FAB10015EB7E /* Example.swift in Sources */,
+				8C9F5A8E289B9043005C174F /* DetailViewController.swift in Sources */,
 				8CA1EFBC289A42E30015EB7E /* MediaCollectionViewController.swift in Sources */,
 				8CA1EFAC2899F8200015EB7E /* Test.swift in Sources */,
 				8CA1EF962899F6B40015EB7E /* AppDelegate.swift in Sources */,

@@ -15,6 +15,11 @@ class MediaCollectionViewController: UICollectionViewController {
     
    
     var list: [MediaModel] = []
+    var OverviewList: [String] = []
+    var titleList: [String] = []
+    var imageList: [String] = []
+    var backdropList: [String] = []
+    var movieIDList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +94,7 @@ class MediaCollectionViewController: UICollectionViewController {
         cell.layer.borderColor = UIColor.clear.cgColor
         cell.layer.shadowOffset = CGSize(width: -2, height: 2)
         cell.layer.shadowRadius = 3
-    
+       
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -101,14 +106,13 @@ class MediaCollectionViewController: UICollectionViewController {
             cell.mediaReleaseDate.text = resultString
         }
         
+        
         return cell
 
     }
     
     func requestData() {
-
-
-        let url = EndPoint.TMDBurl + "/trending/movie/week?api_key=\(APIKey.TMDBKey)"
+        let url = EndPoint.TMDBurl + "/trending/movie/day?api_key=\(APIKey.TMDBKey)"
 
         AF.request(url, method: .get).validate().responseJSON { [self] response in
             switch response.result {
@@ -121,9 +125,14 @@ class MediaCollectionViewController: UICollectionViewController {
                 for num in 0...json["results"].count - 1 {
                     // 이미지
                     let MI = json["results"][num]["poster_path"].stringValue
+                    imageList.append(MI)
+                    
+                    let BI = json["results"][num]["backdrop_path"].stringValue
+                    backdropList.append(BI)
                     
                     // 제목
                     let MT = json["results"][num]["title"].stringValue
+                    titleList.append(MT)
                     
                     // 배우 (미완)
                     let MD = json["results"][num]["genres"]["name"].stringValue
@@ -134,22 +143,43 @@ class MediaCollectionViewController: UICollectionViewController {
                     // 장르
                     let MG = json["results"][num]["genre_ids"][0].intValue
                     
-
+                    // 화면전환 - 줄거리
+                    let MO = json["results"][num]["overview"].stringValue
+                    OverviewList.append(MO)
+                    
+                    // 화면전환 - ID
+                    let MID = json["results"][num]["id"].stringValue
+                    movieIDList.append(MID)
+                    
                     let data = MediaModel(movieImage: MI, movieTitle: MT, movieActor: MD, movieDate: MR)
                     self.list.append(data)
                 }
-                        
+                    
                     self.collectionView.reloadData()
+                
+                
                     print(list)
                     
-
-
-
                     case .failure(let error):
                         print(error)
                     }
                 }
             }
+    
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        vc.OverviewInfo = OverviewList[indexPath.item]
+        vc.titleInfo = titleList[indexPath.item]
+        vc.imageInfo = imageList[indexPath.item]
+        vc.backdropInfo = backdropList[indexPath.item]
+        vc.movieIDINfo = movieIDList[indexPath.item]
+        self.navigationController?.pushViewController(vc, animated: true)
+    
+        }
     }
+
 
 

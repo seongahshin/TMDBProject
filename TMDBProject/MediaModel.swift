@@ -13,3 +13,9 @@ struct MediaModel {
     var movieActor: String
     var movieDate: String
 }
+
+struct CharacterModel {
+    var chrImage: String
+    var chrRealName: String
+    var chrName: String
+}
