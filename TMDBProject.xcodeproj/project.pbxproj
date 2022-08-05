@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C9C3D02289D1CDF00372593 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C3D01289D1CDF00372593 /* WebViewController.swift */; };
 		8C9F5A8E289B9043005C174F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F5A8D289B9042005C174F /* DetailViewController.swift */; };
 		8C9F5A91289B90A3005C174F /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F5A90289B90A3005C174F /* OverviewTableViewCell.swift */; };
 		8C9F5A93289B90AE005C174F /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F5A92289B90AE005C174F /* CastTableViewCell.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C9C3D01289D1CDF00372593 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		8C9F5A8D289B9042005C174F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8C9F5A90289B90A3005C174F /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		8C9F5A92289B90AE005C174F /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C9C3D00289D1CCA00372593 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				8C9C3D01289D1CDF00372593 /* WebViewController.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		8C9F5A8F289B9049005C174F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 		8CA1EF942899F6B40015EB7E /* TMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				8C9C3D00289D1CCA00372593 /* Web */,
 				8C9F5A94289B9726005C174F /* Main */,
 				8C9F5A8F289B9049005C174F /* Detail */,
 				8CA1EFB22899FA9A0015EB7E /* Key */,
@@ -236,6 +247,7 @@
 				8CA1EF982899F6B40015EB7E /* SceneDelegate.swift in Sources */,
 				8CA1EFAE2899F8880015EB7E /* APIKey.swift in Sources */,
 				8CA1EFB02899F9CF0015EB7E /* Constant.swift in Sources */,
+				8C9C3D02289D1CDF00372593 /* WebViewController.swift in Sources */,
 				8CA1EFB62899FABC0015EB7E /* Example2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

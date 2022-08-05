@@ -21,6 +21,7 @@ class MediaCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var mediaGenre: UILabel!
     
+    @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var backView: UIView!
     
 }

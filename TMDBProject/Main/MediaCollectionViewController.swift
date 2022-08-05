@@ -13,13 +13,16 @@ import Kingfisher
 
 class MediaCollectionViewController: UICollectionViewController {
     
-   
+    @IBOutlet weak var viedeoButton: UIButton!
+    
     var list: [MediaModel] = []
     var OverviewList: [String] = []
     var titleList: [String] = []
     var imageList: [String] = []
     var backdropList: [String] = []
     var movieIDList: [String] = []
+    var movieURL = ""
+    var movieURLList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +90,12 @@ class MediaCollectionViewController: UICollectionViewController {
         cell.backView.layer.cornerRadius = 10
         cell.backView.layer.borderWidth = 0.05
         
+        // 비디오 버튼
+        cell.videoButton.layer.cornerRadius = 15
+        cell.videoButton.backgroundColor = .white
+        cell.videoButton.tintColor = .black
+        cell.videoButton.tag = Int(movieIDList[indexPath.item])!
+        cell.videoButton.addTarget(self, action: #selector(videoButtonTapped(_:)), for: .touchUpInside)
         
         
         cell.layer.masksToBounds = false
@@ -110,6 +119,19 @@ class MediaCollectionViewController: UICollectionViewController {
         return cell
 
     }
+    
+    @objc func videoButtonTapped(_ sender: UIButton) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        requestWebData(movieID: sender.tag)
+        print(UserDefaults.standard.string(forKey: "\(sender.tag)"))
+        vc.movieURLINfo = UserDefaults.standard.string(forKey: "\(sender.tag)") ?? ""
+        
+        
+//        vc.movieURLINfo = movieURLList[0]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func requestData() {
         let url = EndPoint.TMDBurl + "/trending/movie/day?api_key=\(APIKey.TMDBKey)"
@@ -166,7 +188,30 @@ class MediaCollectionViewController: UICollectionViewController {
                 }
             }
     
-    
+    func requestWebData(movieID: Int) {
+        let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=3747fc8acaa2d8bd516e07473a9dd67d&language=en-US"
+        
+        
+        AF.request(url, method: .get).validate().responseJSON { [self] response in
+            switch response.result  {
+            case .success(let value):
+
+                let json = JSON(value)
+                print("JSON: \(json)")
+                
+                
+                let keyMU = json["results"][0]["key"].stringValue
+                let MU = "https://www.youtube.com/watch?v=" + "\(keyMU)"
+                print(MU)
+                UserDefaults.standard.set(MU, forKey: "\(movieID)")
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        
+    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -179,6 +224,17 @@ class MediaCollectionViewController: UICollectionViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     
         }
+    
+    @IBAction func videoButtonClicked(_ sender: UIButton) {
+        
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
     }
 
 

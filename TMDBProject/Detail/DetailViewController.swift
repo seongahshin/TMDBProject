@@ -42,7 +42,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         CastTableView.delegate = self
         CastTableView.dataSource = self
         headerDesign()
-        CastTableView.prefetchDataSource = self
+//        CastTableView.prefetchDataSource = self
+        requestData()
     }
     
     func headerDesign() {
@@ -52,6 +53,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let backdropURL = URL(string: "https://image.tmdb.org/t/p/original/\(backdropInfo)")
         detailBackDrop.kf.setImage(with: backdropURL)
+        
+    }
+    
+    func videoButtonDesign() {
         
     }
     
@@ -107,7 +112,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         print("JSON: \(json)")
 
                 for num in 0...json["cast"].count {
-
+                
                     // 캐릭터 이미지
                     let CharaterImage = json["cast"][num]["profile_path"].stringValue
 
@@ -132,15 +137,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 }
 
-extension DetailViewController: UITableViewDataSourcePrefetching {
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            if chrList.count - 1 == indexPath.item && chrList.count < totalCount {
-                startPage += 4
-                requestData()
-            }
-        }
-    }
+//extension DetailViewController: UITableViewDataSourcePrefetching {
+//    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+//        for indexPath in indexPaths {
+//            if chrList.count - 1 == indexPath.item && chrList.count < totalCount {
+//                startPage += 4
+//            }
+//        }
+//    }
     
     
-}
+
