@@ -189,7 +189,7 @@ class MediaCollectionViewController: UICollectionViewController {
             }
     
     func requestWebData(movieID: Int) {
-        let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=3747fc8acaa2d8bd516e07473a9dd67d&language=en-US"
+        let url = "\(EndPoint.TMDBcastURL)\(movieID)/videos?api_key=\(APIKey.TMDBKey)&language=en-US"
         
         
         AF.request(url, method: .get).validate().responseJSON { [self] response in
