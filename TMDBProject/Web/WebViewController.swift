@@ -30,6 +30,5 @@ class WebViewController: UIViewController {
         print("\(movieURLINfo)나웹이에요")
         webView.load(request)
     }
-
     
 }

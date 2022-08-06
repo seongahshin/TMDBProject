@@ -54,11 +54,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let backdropURL = URL(string: "https://image.tmdb.org/t/p/original/\(backdropInfo)")
         detailBackDrop.kf.setImage(with: backdropURL)
         
-    }
-    
-    func videoButtonDesign() {
+        // 헤더 제목 디자인
+        detailTitle.textColor = .white
+        detailTitle.font = .boldSystemFont(ofSize: 30)
+        
+        
         
     }
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch tableView {
@@ -83,6 +86,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case OverviewTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OverviewTableViewCell", for: indexPath) as! OverviewTableViewCell
             cell.overviewLable.text = OverviewInfo
+            cell.overviewLable.font = .boldSystemFont(ofSize: 14)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CastTableViewCell", for: indexPath) as! CastTableViewCell
@@ -90,12 +94,16 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // 셀 이미지
             let url = URL(string: "https://image.tmdb.org/t/p/original/\(chrList[indexPath.row].chrImage)")
             cell.chrImage.kf.setImage(with: url)
+            cell.chrImage.layer.cornerRadius = 10
             
             // 셀 본명
             cell.chrRealName.text = chrList[indexPath.row].chrRealName
+            cell.chrRealName.font = .boldSystemFont(ofSize: 16)
             
             // 셀 캐릭터명
             cell.chrName.text = chrList[indexPath.row].chrName
+            cell.chrName.textColor = .lightGray
+            cell.chrName.font = .systemFont(ofSize: 14)
             return cell
         }
     }
