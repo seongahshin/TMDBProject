@@ -42,6 +42,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         CastTableView.delegate = self
         CastTableView.dataSource = self
         headerDesign()
+        self.navigationItem.title = "출연/제작"
 //        CastTableView.prefetchDataSource = self
         requestData()
     }
@@ -94,11 +95,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // 셀 이미지
             let url = URL(string: "https://image.tmdb.org/t/p/original/\(chrList[indexPath.row].chrImage)")
             cell.chrImage.kf.setImage(with: url)
-            cell.chrImage.layer.cornerRadius = 10
             
             // 셀 본명
             cell.chrRealName.text = chrList[indexPath.row].chrRealName
-            cell.chrRealName.font = .boldSystemFont(ofSize: 16)
+            
+            cell.chrRealName.font = .boldSystemFont(ofSize: 20)
             
             // 셀 캐릭터명
             cell.chrName.text = chrList[indexPath.row].chrName
@@ -119,7 +120,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         let json = JSON(value)
                         print("JSON: \(json)")
 
-                for num in 0...json["cast"].count {
+                for num in 0...json["cast"].count - 1 {
                 
                     // 캐릭터 이미지
                     let CharaterImage = json["cast"][num]["profile_path"].stringValue
