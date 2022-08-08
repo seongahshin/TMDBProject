@@ -89,7 +89,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let cell = tableView.dequeueReusableCell(withIdentifier: "OverviewTableViewCell", for: indexPath) as! OverviewTableViewCell
             cell.overviewLable.text = OverviewInfo
             cell.overviewLable.font = .boldSystemFont(ofSize: 14)
-            cell.overviewLable.numberOfLines = isExpanded ? 1 : 4
+            cell.overviewLable.numberOfLines = isExpanded ? 1 : 10
             
             if isExpanded == true {
                 cell.expandedButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
