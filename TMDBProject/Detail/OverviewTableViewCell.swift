@@ -10,6 +10,7 @@ import UIKit
 class OverviewTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var expandedButton: UIButton!
     @IBOutlet weak var overviewLable: UILabel!
     
 }

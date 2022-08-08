@@ -24,6 +24,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var chrList: [CharacterModel] = []
     var totalCount = 0
     var startPage = 3
+    var isExpanded = true
     
     @IBOutlet weak var OverviewTableView: UITableView!
     @IBOutlet weak var CastTableView: UITableView!
@@ -88,6 +89,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let cell = tableView.dequeueReusableCell(withIdentifier: "OverviewTableViewCell", for: indexPath) as! OverviewTableViewCell
             cell.overviewLable.text = OverviewInfo
             cell.overviewLable.font = .boldSystemFont(ofSize: 14)
+            cell.overviewLable.numberOfLines = isExpanded ? 1 : 4
+            
+            if isExpanded == true {
+                cell.expandedButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            } else {
+                cell.expandedButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+            }
+            cell.expandedButton.tintColor = .darkGray
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CastTableViewCell", for: indexPath) as! CastTableViewCell
@@ -107,6 +116,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.chrName.font = .systemFont(ofSize: 14)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
     
     func requestData() {
@@ -142,6 +155,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
     
     
+    @IBAction func expandedButtonClicked(_ sender: UIButton) {
+        isExpanded = !isExpanded
+        OverviewTableView.reloadData()
+
+    }
     
 
 }

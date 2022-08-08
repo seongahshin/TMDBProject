@@ -12,6 +12,7 @@ struct MediaModel {
     var movieTitle: String
     var movieActor: String
     var movieDate: String
+    var movieGenre: String
 }
 
 struct CharacterModel {
@@ -19,3 +20,5 @@ struct CharacterModel {
     var chrRealName: String
     var chrName: String
 }
+
+

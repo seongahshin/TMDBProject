@@ -13,7 +13,6 @@ import Kingfisher
 
 class MediaCollectionViewController: UICollectionViewController {
     
-    @IBOutlet weak var viedeoButton: UIButton!
     
     var list: [MediaModel] = []
     var OverviewList: [String] = []
@@ -23,6 +22,8 @@ class MediaCollectionViewController: UICollectionViewController {
     var movieIDList: [String] = []
     var movieURL = ""
     var movieURLList: [String] = []
+    var movieGenre: [Int:String] = [28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy", 80: "Crime", 99: "Documentary", 18: "Drama", 10751: "Family", 14: "Fantasy", 36: "History", 27: "Horror", 10402: "Music", 9648: "Mystery", 10749: "Romance", 878: "Science Fiction", 10770: "TV Movie", 53:"Thriller", 10752: "War", 37: "Western"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +98,11 @@ class MediaCollectionViewController: UICollectionViewController {
         cell.videoButton.tag = Int(movieIDList[indexPath.item])!
         cell.videoButton.addTarget(self, action: #selector(videoButtonTapped(_:)), for: .touchUpInside)
         
+        // 장르레이블
+        cell.mediaGenre.text = "#\(list[indexPath.item].movieGenre)"
+        cell.mediaGenre.font = .boldSystemFont(ofSize: 20)
+        
+        
         
         cell.layer.masksToBounds = false
         cell.layer.shadowOpacity = 0.3
@@ -124,7 +130,6 @@ class MediaCollectionViewController: UICollectionViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
         requestWebData(movieID: sender.tag)
-        print(UserDefaults.standard.string(forKey: "\(sender.tag)"))
         vc.movieURLINfo = UserDefaults.standard.string(forKey: "\(sender.tag)") ?? ""
         
         
@@ -165,6 +170,8 @@ class MediaCollectionViewController: UICollectionViewController {
                     // 장르
                     let MG = json["results"][num]["genre_ids"][0].intValue
                     
+                    guard let mg = movieGenre[MG] else { return }
+                    
                     // 화면전환 - 줄거리
                     let MO = json["results"][num]["overview"].stringValue
                     OverviewList.append(MO)
@@ -173,14 +180,14 @@ class MediaCollectionViewController: UICollectionViewController {
                     let MID = json["results"][num]["id"].stringValue
                     movieIDList.append(MID)
                     
-                    let data = MediaModel(movieImage: MI, movieTitle: MT, movieActor: MD, movieDate: MR)
+                    let data = MediaModel(movieImage: MI, movieTitle: MT, movieActor: MD, movieDate: MR, movieGenre: mg)
                     self.list.append(data)
                 }
                     
                     self.collectionView.reloadData()
                 
                 
-                    print(list)
+                    print("----\(list)")
                     
                     case .failure(let error):
                         print(error)
@@ -225,6 +232,7 @@ class MediaCollectionViewController: UICollectionViewController {
     
         }
     
+    
     @IBAction func videoButtonClicked(_ sender: UIButton) {
         
 //        let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -232,6 +240,7 @@ class MediaCollectionViewController: UICollectionViewController {
 //
 //        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     
     
     
