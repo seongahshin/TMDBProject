@@ -24,7 +24,8 @@ class NewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTableView.delegate = self
-        mainTableView.dataSource = self 
+        mainTableView.dataSource = self
+        TMDBAPIManager.shared.callRequest(query: 10692)
         
     }
 }
