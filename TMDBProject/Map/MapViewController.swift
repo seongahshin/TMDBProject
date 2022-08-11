@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var actionSheetButton: UIButton!
     // Location2. 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
     let data = TheaterList().mapAnnotations
@@ -32,7 +33,7 @@ class MapViewController: UIViewController {
         
         // didchange에서 실행시켜 줘서 필요없음
 //        checkUserDeviceLocationServiceAuthorization()
-        
+        actionSheetButtonDesign()
         
     }
     
@@ -40,6 +41,14 @@ class MapViewController: UIViewController {
 //        showRequestLocationServiceAlert()
 //    }
     
+    func actionSheetButtonDesign() {
+        actionSheetButton.setTitle("영화관 찾아보기", for: .normal)
+        actionSheetButton.titleLabel?.font = .systemFont(ofSize: 11)
+        actionSheetButton.backgroundColor = .lightGray
+        actionSheetButton.setTitleColor(.white, for: .normal)
+        actionSheetButton.layer.cornerRadius = 10
+        
+    }
     func setRegion(center: CLLocationCoordinate2D) {
         
 
