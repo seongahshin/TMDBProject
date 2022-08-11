@@ -17,7 +17,8 @@ class MapViewController: UIViewController {
     
     // Location2. 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
-    
+    var locationList: [CLLocationCoordinate2D] = []
+    var locationName: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,20 @@ class MapViewController: UIViewController {
         // 지도 중심 기반으로 보여질 범위 설정
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
+        
+        let data = TheaterList().mapAnnotations
+        
+        for num in 0...data.count - 1 {
+            let center = CLLocationCoordinate2D(latitude: data[num].latitude, longitude: data[num].longitude)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = center
+            annotation.title = data[num].location
+            mapView.addAnnotation(annotation)
+        }
+        
+        
+        
+        
         
         
     }
