@@ -17,8 +17,7 @@ class MapViewController: UIViewController {
     
     // Location2. 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
-    var locationList: [CLLocationCoordinate2D] = []
-    var locationName: [String] = []
+    let data = TheaterList().mapAnnotations
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +48,6 @@ class MapViewController: UIViewController {
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
         
-        let data = TheaterList().mapAnnotations
         
         for num in 0...data.count - 1 {
             let center = CLLocationCoordinate2D(latitude: data[num].latitude, longitude: data[num].longitude)
@@ -78,6 +76,56 @@ class MapViewController: UIViewController {
       requestLocationServiceAlert.addAction(goSetting)
       present(requestLocationServiceAlert, animated: true, completion: nil)
     }
+    
+    func actionSheetButtonHandler(_ title: String) {
+        
+        for num in 0...data.count - 1 {
+            if data[num].type == title {
+                let annotation = MKPointAnnotation()
+                let center = CLLocationCoordinate2D(latitude: data[num].latitude, longitude: data[num].longitude)
+                annotation.coordinate = center
+                annotation.title = data[num].location
+                self.mapView.addAnnotation(annotation)
+            }
+        }
+    }
+    
+    @IBAction func actionSheetButtonClicked(_ sender: UIButton) {
+        let alert = UIAlertController(title: "영화관 종류", message: "원하는 영화관 종류를 선택해주세요", preferredStyle: .actionSheet)
+        let data = TheaterList().mapAnnotations
+
+        alert.addAction(UIAlertAction(title: "메가박스", style: .default, handler: { UIAlertAction in
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            guard let name = UIAlertAction.title else { return }
+            self.actionSheetButtonHandler(name)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "롯데시네마", style: .default, handler: { UIAlertAction in
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            guard let name = UIAlertAction.title else { return }
+            self.actionSheetButtonHandler(name)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "CGV", style: .default, handler: { UIAlertAction in
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            guard let name = UIAlertAction.title else { return }
+            self.actionSheetButtonHandler(name)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "전체보기", style: .default, handler: { UIAlertAction in
+            for num in 0...data.count - 1 {
+                let center = CLLocationCoordinate2D(latitude: data[num].latitude, longitude: data[num].longitude)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = center
+                annotation.title = data[num].location
+                self.mapView.addAnnotation(annotation)
+            }
+        }))
+
+        
+        present(alert, animated: true)
+    }
+    
 }
 
 

@@ -464,6 +464,19 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Tr0-PU-RDl">
                                 <rect key="frame" x="0.0" y="64" width="414" height="798"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhD-xC-lRG">
+                                <rect key="frame" x="334" y="812" width="60" height="30"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZPI-TG-HND"/>
+                                    <constraint firstAttribute="width" constant="60" id="rHq-Fc-ptF"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="actionSheetButtonClicked:" destination="Cr4-ly-vtc" eventType="touchUpInside" id="hd1-O9-FtB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lhW-I3-PXC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -472,6 +485,8 @@
                             <constraint firstItem="lhW-I3-PXC" firstAttribute="bottom" secondItem="Tr0-PU-RDl" secondAttribute="bottom" id="NAX-GC-Pht"/>
                             <constraint firstItem="Tr0-PU-RDl" firstAttribute="leading" secondItem="lhW-I3-PXC" secondAttribute="leading" id="Nzz-IV-VmK"/>
                             <constraint firstItem="lhW-I3-PXC" firstAttribute="trailing" secondItem="Tr0-PU-RDl" secondAttribute="trailing" id="XXd-Yg-JmF"/>
+                            <constraint firstItem="lhW-I3-PXC" firstAttribute="bottom" secondItem="nhD-xC-lRG" secondAttribute="bottom" constant="20" id="cRj-A3-wFX"/>
+                            <constraint firstItem="lhW-I3-PXC" firstAttribute="trailing" secondItem="nhD-xC-lRG" secondAttribute="trailing" constant="20" id="hTQ-GL-2k8"/>
                         </constraints>
                     </view>
                     <connections>
