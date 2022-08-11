@@ -36,9 +36,9 @@ class MapViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        showRequestLocationServiceAlert()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        showRequestLocationServiceAlert()
+//    }
     
     func setRegion(center: CLLocationCoordinate2D) {
         
@@ -109,6 +109,7 @@ extension MapViewController {
             
         case .restricted, .denied:
             print("DENIED, 아이폰 설정으로 유도")
+            showRequestLocationServiceAlert()
         
         case .authorizedWhenInUse:
             print("WHEN IN USE")
