@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C016BFA28A634BC00367F60 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C016BF928A634BC00367F60 /* WeatherViewController.swift */; };
 		8C1104AB28A2511900010CDA /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1104AA28A2511900010CDA /* NewViewController.swift */; };
 		8C1104AD28A2515B00010CDA /* NewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C1104AC28A2515B00010CDA /* NewView.xib */; };
 		8C1104AF28A251A400010CDA /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1104AE28A251A400010CDA /* NewView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C016BF928A634BC00367F60 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		8C1104AA28A2511900010CDA /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		8C1104AC28A2515B00010CDA /* NewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewView.xib; sourceTree = "<group>"; };
 		8C1104AE28A251A400010CDA /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C016BF828A634AF00367F60 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				8C016BF928A634BC00367F60 /* WeatherViewController.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		8C11049928A235FE00010CDA /* New */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +165,7 @@
 		8CA1EF942899F6B40015EB7E /* TMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				8C016BF828A634AF00367F60 /* Weather */,
 				8C1104C128A5262000010CDA /* Map */,
 				8C11049928A235FE00010CDA /* New */,
 				8C9C3D00289D1CCA00372593 /* Web */,
@@ -297,6 +308,7 @@
 				8C9C3D02289D1CDF00372593 /* WebViewController.swift in Sources */,
 				8CA1EFB62899FABC0015EB7E /* Example2.swift in Sources */,
 				8C1104B428A2553100010CDA /* NewCollectionViewCell.swift in Sources */,
+				8C016BFA28A634BC00367F60 /* WeatherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
