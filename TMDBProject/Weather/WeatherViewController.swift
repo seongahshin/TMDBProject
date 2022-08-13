@@ -7,22 +7,85 @@
 
 import UIKit
 
+import Alamofire
+import SwiftyJSON
+
 // L1. import
 import CoreLocation
 
-class WeatherViewController: UIViewController {
+var answer: [String] = []
 
+class WeatherViewController: UIViewController {
+    
+
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var huminityLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var byeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    
+    
     // Location2. 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            UserDefaults.standard.removeObject(forKey: key.description)
+        }
+        
+        
+        
         // Location3. 프로토콜 연결
         locationManager.delegate = self
+        self.tempLabel.text = ""
         
     }
     
+    
+    func labelDesign() {
+        print(#function)
+        
+        guard let imp = UserDefaults.standard.array(forKey: "weatherInfoList") else { return }
+        tempLabel.text = "\(imp[0])"
+    }
+    
+    func callRequest() {
+        
+        let url = "\(EndPoint.WeatherURL)\(UserDefaults.standard.double(forKey: "latitude"))&lon=\(UserDefaults.standard.double(forKey:"longitude"))&appid=\(APIKey.WeatherKey)"
+        var weatherInfoList: [String] = []
+        
+        
+        AF.request(url, method: .get).validate().responseData { [self] response in
+            switch response.result {
+                    case .success(let value):
+
+                        let json = JSON(value)
+                        print("JSON: \(json)")
+                
+                var answer: [String] = []
+                    
+                weatherInfoList.append("\(json["name"].stringValue)지금은 \(round(json["main"]["temp"].doubleValue - 273.15))도에요")
+                weatherInfoList.append("\(json["main"]["humidity"].intValue)% 만큼 습해요")
+                weatherInfoList.append("\(round(json["wind"]["speed"].doubleValue))m/s의 바람이 불어요")
+                weatherInfoList.append("오늘도 행복한 하루 보내세요")
+                answer = weatherInfoList
+                print(answer)
+                UserDefaults.standard.set(answer, forKey: "weatherInfoList")
+                labelDesign()
+                
+                
+                
+                    
+                    case .failure(let error):
+                        print(error)
+            }
+        }
+    }
     
     func showRequestLocationServiceAlert() {
         print(#function)
@@ -32,14 +95,15 @@ class WeatherViewController: UIViewController {
               UIApplication.shared.open(appSetting)
           }
       }
-        let cancel = UIAlertAction(title: "취소", style: .default) { _ in
-            // 43.121566, -87.915186
-            
-            
-            UserDefaults.standard.set(37.517829, forKey: "latitude")
-            UserDefaults.standard.set(126.886270, forKey: "longitude")
-            WeatherAPIManager.shared.callRequest()
-        }
+        
+      let cancel = UIAlertAction(title: "취소", style: .default) { _ in
+          self.tempLabel.text = ""
+          
+           
+//     
+          
+          
+      }
       requestLocationServiceAlert.addAction(cancel)
       requestLocationServiceAlert.addAction(goSetting)
       present(requestLocationServiceAlert, animated: true, completion: nil)
@@ -86,7 +150,8 @@ extension WeatherViewController {
         case .notDetermined:
             print("NOTDETERMINED")
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization() // 앱을 사용하는 동안에 위치 권한 요청
+            locationManager.requestWhenInUseAuthorization()
+            // 앱을 사용하는 동안에 위치 권한 요청
             // plist WhenInUse -> request 메서드 OK
 //            locationManager.startUpdatingLocation()
             
@@ -94,11 +159,14 @@ extension WeatherViewController {
             print("DENIED, 아이폰 설정으로 유도")
             
             showRequestLocationServiceAlert()
+            
+            
         
         case .authorizedWhenInUse:
             print("WHEN IN USE")
             // 사용자가 위치를 허용해둔 상태라면, startUpdatingLocation을 통해 didUpdateLocations 메서드가 실행
             locationManager.startUpdatingLocation()
+            
         default: print("DEFAULT")
         }
     }
@@ -111,7 +179,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     // Location5. 사용자의 위치를 성공적으로 가져온 경우에 해당
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(#function, locations)
+        print(#function)
         
         // ex. 위도, 경도 기반으로 날씨 정보를 조회
         // ex. 지도를 다시 세팅
@@ -123,23 +191,24 @@ extension WeatherViewController: CLLocationManagerDelegate {
             let longitude = coordinate.longitude
             UserDefaults.standard.set(latitude, forKey: "latitude")
             UserDefaults.standard.set(longitude, forKey: "longitude")
+            callRequest()
             print("현재 위치의 위도: \(UserDefaults.standard.double(forKey: "latitude"))")
             print("현재 위치의 경도: \(UserDefaults.standard.double(forKey: "longitude"))")
-            WeatherAPIManager.shared.callRequest()
-           
+            
+//            labelDesign()
         }
             
         
-        
         // 위치 업데이트 멈춰!
         locationManager.stopUpdatingLocation()
+        
     }
     
     // Location6. 사용자의 위치를 가져오지 못한 경우에 해당
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(#function)
-        // latitude: 37.517829, longitude: 126.886270
-        
+
+        callRequest()
         
         
         

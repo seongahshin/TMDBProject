@@ -507,9 +507,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veu-8E-WXx">
-                                <rect key="frame" x="60" y="64" width="120" height="30"/>
+                                <rect key="frame" x="60" y="64" width="200" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="TuH-CT-kLc"/>
+                                    <constraint firstAttribute="width" constant="200" id="TuH-CT-kLc"/>
                                     <constraint firstAttribute="height" constant="30" id="bKA-UI-4lZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -639,6 +639,14 @@
                             <constraint firstItem="W5H-hi-y10" firstAttribute="top" secondItem="sPm-UR-X6R" secondAttribute="bottom" constant="20" id="w9U-7U-tQM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="byeLabel" destination="wG5-tp-Ny5" id="pCs-ea-naL"/>
+                        <outlet property="dateLabel" destination="Veu-8E-WXx" id="sxy-X7-XWR"/>
+                        <outlet property="huminityLabel" destination="ot6-71-vkT" id="nFL-Rl-8ub"/>
+                        <outlet property="locationLabel" destination="bMU-xg-qy9" id="PzS-eR-lrj"/>
+                        <outlet property="tempLabel" destination="CxX-vd-lqz" id="w2z-yQ-c9G"/>
+                        <outlet property="windLabel" destination="sPm-UR-X6R" id="0H3-oL-LmZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NiQ-ue-0QV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
