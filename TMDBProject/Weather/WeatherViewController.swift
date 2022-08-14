@@ -28,6 +28,7 @@ class WeatherViewController: UIViewController {
     
     
     
+    
     // Location2. 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
     
@@ -44,14 +45,27 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         self.tempLabel.text = ""
         
+        locationLabelDesign()
+    }
+    
+    func locationLabelDesign() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM월 dd일 HH시 mm분"
+        let current_date_string = formatter.string(from: Date())
+        dateLabel.text = current_date_string
+        
     }
     
     
     func labelDesign() {
         print(#function)
-        
+        let labelList: [UILabel] = [locationLabel, tempLabel, huminityLabel, windLabel, byeLabel]
         guard let imp = UserDefaults.standard.array(forKey: "weatherInfoList") else { return }
-        tempLabel.text = "\(imp[0])"
+        
+        for num in 0...labelList.count - 1 {
+            labelList[num].text = imp[num] as! String
+        }
+        
     }
     
     func callRequest() {
@@ -68,8 +82,9 @@ class WeatherViewController: UIViewController {
                         print("JSON: \(json)")
                 
                 var answer: [String] = []
-                    
-                weatherInfoList.append("\(json["name"].stringValue)지금은 \(round(json["main"]["temp"].doubleValue - 273.15))도에요")
+                
+                weatherInfoList.append(json["name"].stringValue)
+                weatherInfoList.append("지금은 \(round(json["main"]["temp"].doubleValue - 273.15))도에요")
                 weatherInfoList.append("\(json["main"]["humidity"].intValue)% 만큼 습해요")
                 weatherInfoList.append("\(round(json["wind"]["speed"].doubleValue))m/s의 바람이 불어요")
                 weatherInfoList.append("오늘도 행복한 하루 보내세요")
@@ -97,10 +112,12 @@ class WeatherViewController: UIViewController {
       }
         
       let cancel = UIAlertAction(title: "취소", style: .default) { _ in
-          self.tempLabel.text = ""
+          let labelList: [UILabel] = [self.locationLabel, self.tempLabel, self.huminityLabel, self.windLabel, self.byeLabel]
           
-           
-//     
+          for num in 0...labelList.count - 1 {
+              labelList[num].text = "위치권한이 꺼져있어요"
+          }
+          
           
           
       }
