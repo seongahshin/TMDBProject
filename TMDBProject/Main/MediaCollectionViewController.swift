@@ -130,7 +130,9 @@ class MediaCollectionViewController: UICollectionViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
         requestWebData(movieID: sender.tag)
-        vc.movieURLINfo = UserDefaults.standard.string(forKey: "\(sender.tag)")!
+//        guard let movieURLINfo = UserDefaults.standard.string(forKey: "(\(sender.tag)") else { return }
+        
+        vc.movieURLINfo = UserDefaults.standard.string(forKey: "\(sender.tag)") ?? ""
         
         
 //        vc.movieURLINfo = movieURLList[0]
