@@ -38,7 +38,43 @@
 		8CA1EFC4289A48510015EB7E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 8CA1EFC3289A48510015EB7E /* SwiftyJSON */; };
 		8CA1EFC6289A4DFB0015EB7E /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA1EFC5289A4DFB0015EB7E /* MediaModel.swift */; };
 		8CA1EFC9289A5E170015EB7E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8CA1EFC8289A5E170015EB7E /* Kingfisher */; };
+		8CB30DD728ABC95600820738 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB30DD628ABC95600820738 /* TutorialViewController.swift */; };
+		8CB30DD928ABC97A00820738 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB30DD828ABC97A00820738 /* FirstViewController.swift */; };
+		8CB30DDB28ABC98300820738 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB30DDA28ABC98300820738 /* SecondViewController.swift */; };
+		8CB30E0C28ABCC1100820738 /* TMDBUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */; };
+		8CB30E0D28ABCC1100820738 /* TMDBUIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CB30E0728ABCC0800820738 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CB30DE628ABCB9300820738;
+			remoteInfo = TMDBUIFramework;
+		};
+		8CB30E0928ABCC0800820738 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CB30DF028ABCB9300820738;
+			remoteInfo = TMDBUIFrameworkTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8CB30E0E28ABCC1100820738 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8CB30E0D28ABCC1100820738 /* TMDBUIFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8C016BF928A634BC00367F60 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +107,10 @@
 		8CA1EFBB289A42E30015EB7E /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewController.swift; sourceTree = "<group>"; };
 		8CA1EFBD289A43270015EB7E /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		8CA1EFC5289A4DFB0015EB7E /* MediaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
+		8CB30DD628ABC95600820738 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		8CB30DD828ABC97A00820738 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		8CB30DDA28ABC98300820738 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBUIFramework.xcodeproj; path = ../TMDBUIFramework/TMDBUIFramework.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CB30E0C28ABCC1100820738 /* TMDBUIFramework.framework in Frameworks */,
 				8CA1EFC9289A5E170015EB7E /* Kingfisher in Frameworks */,
 				8CA1EFC4289A48510015EB7E /* SwiftyJSON in Frameworks */,
 				8CA1EFC1289A48350015EB7E /* Alamofire in Frameworks */,
@@ -148,9 +189,11 @@
 		8CA1EF892899F6B40015EB7E = {
 			isa = PBXGroup;
 			children = (
+				8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */,
 				8CA1EFA92899F7D00015EB7E /* .gitignore */,
 				8CA1EF942899F6B40015EB7E /* TMDBProject */,
 				8CA1EF932899F6B40015EB7E /* Products */,
+				8CB30E0B28ABCC1100820738 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +208,7 @@
 		8CA1EF942899F6B40015EB7E /* TMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				8CE541C728ABC4E200985752 /* Tutorial */,
 				8C016BF828A634AF00367F60 /* Weather */,
 				8C1104C128A5262000010CDA /* Map */,
 				8C11049928A235FE00010CDA /* New */,
@@ -203,6 +247,32 @@
 			path = Key;
 			sourceTree = "<group>";
 		};
+		8CB30E0328ABCC0800820738 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */,
+				8CB30E0A28ABCC0800820738 /* TMDBUIFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CB30E0B28ABCC1100820738 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8CE541C728ABC4E200985752 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				8CB30DD628ABC95600820738 /* TutorialViewController.swift */,
+				8CB30DD828ABC97A00820738 /* FirstViewController.swift */,
+				8CB30DDA28ABC98300820738 /* SecondViewController.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,6 +283,7 @@
 				8CA1EF8E2899F6B40015EB7E /* Sources */,
 				8CA1EF8F2899F6B40015EB7E /* Frameworks */,
 				8CA1EF902899F6B40015EB7E /* Resources */,
+				8CB30E0E28ABCC1100820738 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,12 +330,35 @@
 			);
 			productRefGroup = 8CA1EF932899F6B40015EB7E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8CB30E0328ABCC0800820738 /* Products */;
+					ProjectRef = 8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8CA1EF912899F6B40015EB7E /* TMDBProject */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TMDBUIFramework.framework;
+			remoteRef = 8CB30E0728ABCC0800820738 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8CB30E0A28ABCC0800820738 /* TMDBUIFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TMDBUIFrameworkTests.xctest;
+			remoteRef = 8CB30E0928ABCC0800820738 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8CA1EF902899F6B40015EB7E /* Resources */ = {
@@ -290,6 +384,8 @@
 				8C1104B128A253F700010CDA /* NewTableViewCell.swift in Sources */,
 				8C9F5A91289B90A3005C174F /* OverviewTableViewCell.swift in Sources */,
 				8CA1EFC6289A4DFB0015EB7E /* MediaModel.swift in Sources */,
+				8CB30DDB28ABC98300820738 /* SecondViewController.swift in Sources */,
+				8CB30DD928ABC97A00820738 /* FirstViewController.swift in Sources */,
 				8C1EDDF828A5268F007AA332 /* MapViewController.swift in Sources */,
 				8C1EDDFA28A53CAF007AA332 /* MapModel.swift in Sources */,
 				8C9F5A93289B90AE005C174F /* CastTableViewCell.swift in Sources */,
@@ -298,6 +394,7 @@
 				8C9F5A8E289B9043005C174F /* DetailViewController.swift in Sources */,
 				8CA1EFBC289A42E30015EB7E /* MediaCollectionViewController.swift in Sources */,
 				8CA1EFAC2899F8200015EB7E /* Test.swift in Sources */,
+				8CB30DD728ABC95600820738 /* TutorialViewController.swift in Sources */,
 				8CA1EF962899F6B40015EB7E /* AppDelegate.swift in Sources */,
 				8CA1EFBE289A43270015EB7E /* MediaCollectionViewCell.swift in Sources */,
 				8CA1EF982899F6B40015EB7E /* SceneDelegate.swift in Sources */,
