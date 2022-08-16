@@ -655,7 +655,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="eTv-GP-LNt">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="uxT-Oi-UTX" customClass="TutorialViewController" customModule="TMDBProject" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="uxT-Oi-UTX" customClass="TutorialViewController" customModule="TMDBProject" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Xqu-CP-hXW"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoH-jl-vRZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

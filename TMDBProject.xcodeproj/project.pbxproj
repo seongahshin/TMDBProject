@@ -41,24 +41,24 @@
 		8CB30DD728ABC95600820738 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB30DD628ABC95600820738 /* TutorialViewController.swift */; };
 		8CB30DD928ABC97A00820738 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB30DD828ABC97A00820738 /* FirstViewController.swift */; };
 		8CB30DDB28ABC98300820738 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB30DDA28ABC98300820738 /* SecondViewController.swift */; };
-		8CB30E0C28ABCC1100820738 /* TMDBUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */; };
-		8CB30E0D28ABCC1100820738 /* TMDBUIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8CB30E8228ABE7C700820738 /* TMDBFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB30E7F28ABE7BD00820738 /* TMDBFramework.framework */; };
+		8CB30E8328ABE7C700820738 /* TMDBFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB30E7F28ABE7BD00820738 /* TMDBFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8CB30E0728ABCC0800820738 /* PBXContainerItemProxy */ = {
+		8CB30E7E28ABE7BD00820738 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */;
+			containerPortal = 8CB30E7928ABE7BD00820738 /* TMDBFramework.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8CB30DE628ABCB9300820738;
-			remoteInfo = TMDBUIFramework;
+			remoteGlobalIDString = 8CB30E5D28ABE78E00820738;
+			remoteInfo = TMDBFramework;
 		};
-		8CB30E0928ABCC0800820738 /* PBXContainerItemProxy */ = {
+		8CB30E8028ABE7BD00820738 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */;
+			containerPortal = 8CB30E7928ABE7BD00820738 /* TMDBFramework.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8CB30DF028ABCB9300820738;
-			remoteInfo = TMDBUIFrameworkTests;
+			remoteGlobalIDString = 8CB30E6728ABE78E00820738;
+			remoteInfo = TMDBFrameworkTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -69,7 +69,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8CB30E0D28ABCC1100820738 /* TMDBUIFramework.framework in Embed Frameworks */,
+				8CB30E8328ABE7C700820738 /* TMDBFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +110,7 @@
 		8CB30DD628ABC95600820738 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8CB30DD828ABC97A00820738 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		8CB30DDA28ABC98300820738 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBUIFramework.xcodeproj; path = ../TMDBUIFramework/TMDBUIFramework.xcodeproj; sourceTree = "<group>"; };
+		8CB30E7928ABE7BD00820738 /* TMDBFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBFramework.xcodeproj; path = ../TMDBFramework/TMDBFramework.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CB30E0C28ABCC1100820738 /* TMDBUIFramework.framework in Frameworks */,
+				8CB30E8228ABE7C700820738 /* TMDBFramework.framework in Frameworks */,
 				8CA1EFC9289A5E170015EB7E /* Kingfisher in Frameworks */,
 				8CA1EFC4289A48510015EB7E /* SwiftyJSON in Frameworks */,
 				8CA1EFC1289A48350015EB7E /* Alamofire in Frameworks */,
@@ -189,11 +189,10 @@
 		8CA1EF892899F6B40015EB7E = {
 			isa = PBXGroup;
 			children = (
-				8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */,
+				8CB30E7928ABE7BD00820738 /* TMDBFramework.xcodeproj */,
 				8CA1EFA92899F7D00015EB7E /* .gitignore */,
 				8CA1EF942899F6B40015EB7E /* TMDBProject */,
 				8CA1EF932899F6B40015EB7E /* Products */,
-				8CB30E0B28ABCC1100820738 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -247,20 +246,13 @@
 			path = Key;
 			sourceTree = "<group>";
 		};
-		8CB30E0328ABCC0800820738 /* Products */ = {
+		8CB30E7A28ABE7BD00820738 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */,
-				8CB30E0A28ABCC0800820738 /* TMDBUIFrameworkTests.xctest */,
+				8CB30E7F28ABE7BD00820738 /* TMDBFramework.framework */,
+				8CB30E8128ABE7BD00820738 /* TMDBFrameworkTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8CB30E0B28ABCC1100820738 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8CE541C728ABC4E200985752 /* Tutorial */ = {
@@ -332,8 +324,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8CB30E0328ABCC0800820738 /* Products */;
-					ProjectRef = 8CB30E0228ABCC0800820738 /* TMDBUIFramework.xcodeproj */;
+					ProductGroup = 8CB30E7A28ABE7BD00820738 /* Products */;
+					ProjectRef = 8CB30E7928ABE7BD00820738 /* TMDBFramework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -344,18 +336,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8CB30E0828ABCC0800820738 /* TMDBUIFramework.framework */ = {
+		8CB30E7F28ABE7BD00820738 /* TMDBFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = TMDBUIFramework.framework;
-			remoteRef = 8CB30E0728ABCC0800820738 /* PBXContainerItemProxy */;
+			path = TMDBFramework.framework;
+			remoteRef = 8CB30E7E28ABE7BD00820738 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8CB30E0A28ABCC0800820738 /* TMDBUIFrameworkTests.xctest */ = {
+		8CB30E8128ABE7BD00820738 /* TMDBFrameworkTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = TMDBUIFrameworkTests.xctest;
-			remoteRef = 8CB30E0928ABCC0800820738 /* PBXContainerItemProxy */;
+			path = TMDBFrameworkTests.xctest;
+			remoteRef = 8CB30E8028ABE7BD00820738 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
